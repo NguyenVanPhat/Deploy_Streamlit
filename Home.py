@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 
 st.set_page_config(
     page_title="Get Video Random",
@@ -8,3 +9,4 @@ st.markdown("<h1 style='text-align: center; color: red;'>ðŸŽ¥ Get Video Random ð
 st.header('')
 st.header('')
 path = ""
+os.system("wget https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7x.pt")
