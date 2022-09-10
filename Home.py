@@ -12,3 +12,4 @@ st.header('')
 path = ""
 # os.system("wget https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7x.pt")
 wget.download("https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7x.pt")
+print("Đã chạy được Wget")
