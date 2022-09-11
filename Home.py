@@ -41,10 +41,12 @@ if click and uploaded_file is not None:
     detector = Detector()
     detector.load_model('./yolov7x.pt')
     tracker = YOLOv7_DeepSORT(reID_model_path="./deep_sort/model_weights/mars-small128.pb", detector=detector)
-    tracker.track_video(tfile.name, output="./result/" + str(name_file), show_live=False, skip_frames=0, count_objects=True, verbose=15)
+    st.write("Input: ", tfile.name)
+    st.write("Ouput: ", "./result/haha.mp4")
+    tracker.track_video(video=str(tfile.name), output="./result/haha.mp4", show_live=False, skip_frames=0, count_objects=True, verbose=15)
 
     f = []
-    mypath = "./result"
+    mypath = "./result/"
     for (dirpath, dirnames, filenames) in walk(mypath):
         f.extend(filenames)
     st.write(f)
