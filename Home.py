@@ -1,7 +1,7 @@
 import streamlit as st
 import wget
 import os
-os.system("apt-get update && apt-get install libgl1")
+# os.system("apt-get update && apt-get install libgl1")
 from detection_helpers import *
 # from tracking_helpers import *
 # from bridge_wrapper import *
@@ -17,4 +17,4 @@ st.header('')
 path = ""
 # os.system("wget https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7x.pt")
 wget.download("https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7x.pt")
-st.write("hello")
+st.write("đã cài thành công")
