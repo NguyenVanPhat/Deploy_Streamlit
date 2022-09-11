@@ -6,7 +6,7 @@ import wget
 # from PIL import Image
 
 st.set_page_config(
-    page_title="Get Video Random",
+    page_title="Web App of Phat",
     page_icon="💽",
 )
 st.markdown("<h1 style='text-align: center; color: red;'>🎥 Get Video Random 📀</h1>", unsafe_allow_html=True)
