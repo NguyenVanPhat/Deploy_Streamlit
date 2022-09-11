@@ -21,7 +21,7 @@ path = ""
 wget.download("https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7x.pt")
 detector = Detector()
 detector.load_model('./yolov7x.pt')
-tracker = YOLOv7_DeepSORT(reID_model_path="/content/yolov7-deepsort-tracking/deep_sort/model_weights/mars-small128.pb", detector=detector)
+tracker = YOLOv7_DeepSORT(reID_model_path="./deep_sort/model_weights/mars-small128.pb", detector=detector)
 
 uploaded_file = st.file_uploader("Tải video lên", type=["mp4"])
 if uploaded_file is not None:
