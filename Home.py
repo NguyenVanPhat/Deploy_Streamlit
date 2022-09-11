@@ -1,7 +1,9 @@
 import streamlit as st
 import wget
 import os
-os.system("lshw -C video")
+# os.system("lshw -C video")
+# import tensorflow as tf
+# print("Num GPUs Available: ", len(tf.config.experimental.list_physical_devices('GPU')))
 from detection_helpers import *
 from tracking_helpers import *
 from bridge_wrapper import *
@@ -24,7 +26,7 @@ detector.load_model('./yolov7x.pt')
 tracker = YOLOv7_DeepSORT(reID_model_path="./deep_sort/model_weights/mars-small128.pb", detector=detector)
 
 uploaded_file = st.file_uploader("Tải video lên", type=["mp4"])
-click = st.button("Tiến hành Object Traking")
+# click = st.button("Tiến hành Object Traking")
 # if uploaded_file is not None:
 #     bytes_data = uploaded_file.getvalue()
 
