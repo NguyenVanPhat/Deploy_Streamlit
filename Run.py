@@ -4,6 +4,8 @@ import imageio
 import streamlit as st
 import cv2
 import tempfile
+from os import walk
+
 
 # os.system("streamlit run home.py")
 # wget.download("https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7x.pt")
@@ -16,3 +18,8 @@ if uploaded_file is not None:
     vf = cv2.VideoCapture(tfile.name)
     fps = vf.get(cv2.CAP_PROP_FPS)
     st.write(int(fps))
+f = []
+mypath = "./models"
+for (dirpath, dirnames, filenames) in walk(mypath):
+    f.extend(filenames)
+st.write(f)
