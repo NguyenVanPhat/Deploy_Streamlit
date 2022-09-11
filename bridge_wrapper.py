@@ -112,8 +112,8 @@ class YOLOv7_DeepSORT:
 
         """Start Code of Phat"""
         # Get FPS of video
-        import imageio
-        fps_video_src = imageio.get_reader(str(video), 'ffmpeg').get_meta_data()['fps']
+        # fps_video_src = imageio.get_reader(str(video), 'ffmpeg').get_meta_data()['fps']
+        fps_video_src = int(vid.get(cv2.CAP_PROP_FPS))
         print("\n FPS of Video: ", fps_video_src)
         """End Code of Phat"""
 
