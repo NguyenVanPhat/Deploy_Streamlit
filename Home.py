@@ -27,6 +27,7 @@ uploaded_file = st.file_uploader("Tải video lên", type=["mp4"])
 # click = st.button("Tiến hành Object Traking")
 if uploaded_file is not None:
     bytes_data = uploaded_file.getvalue()
+    video = imageio.get_reader(bytes_data, 'ffmpeg')
     # detector = Detector()
     # detector.load_model('./yolov7x.pt')
     # tracker = YOLOv7_DeepSORT(reID_model_path="./deep_sort/model_weights/mars-small128.pb", detector=detector)
@@ -35,7 +36,7 @@ if uploaded_file is not None:
 # if click and (uploaded_file is None):
 #     st.caption("Làm ơn tải lên Video")
 # if click and uploaded_file is not None:
-#     video = imageio.get_reader(bytes_data, 'ffmpeg')
+
 #     tracker.track_video(video,
 #                         output="./street_input_test1.mp4", show_live=False, skip_frames=0,
 #                         count_objects=True, verbose=15)
