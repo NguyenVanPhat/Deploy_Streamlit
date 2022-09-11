@@ -1,5 +1,6 @@
 import streamlit as st
 import wget
+from test_Phat import *
 # from detection_helpers import *
 # from tracking_helpers import *
 # from bridge_wrapper import *
@@ -15,4 +16,4 @@ st.header('')
 path = ""
 # os.system("wget https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7x.pt")
 wget.download("https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7x.pt")
-
+phat_test()
