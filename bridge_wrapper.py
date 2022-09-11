@@ -109,7 +109,7 @@ class YOLOv7_DeepSORT:
         except:
             vid = cv2.VideoCapture(video)
         st.write("Đọc file Video thành công")
-        """
+        '''
         """Start Code of Phat"""
         # Get FPS of video
         import imageio
@@ -366,4 +366,4 @@ class YOLOv7_DeepSORT:
                 if cv2.waitKey(1) & 0xFF == ord('q'): break
 
         cv2.destroyAllWindows()
-        """
+        '''
