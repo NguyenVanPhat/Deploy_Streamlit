@@ -3,9 +3,9 @@ import wget
 import os
 # os.system("apt-get update && apt-get install libgl1")
 from detection_helpers import *
-# from tracking_helpers import *
-# from bridge_wrapper import *
-# from PIL import Image
+from tracking_helpers import *
+from bridge_wrapper import *
+from PIL import Image
 
 st.set_page_config(
     page_title="web app of phat",
