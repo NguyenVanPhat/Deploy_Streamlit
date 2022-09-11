@@ -1,2 +1,5 @@
+import streamlit as st
+
+
 def phat_test():
-    print("haha")
+    st.write('Hello, *World!* :sunglasses:')
