@@ -45,16 +45,17 @@ if click and uploaded_file is not None:
     # st.write("Ouput: ", "./result/haha.mp4")
     tracker.track_video(video=str(tfile.name), output="./haha.mp4", show_live=False, skip_frames=0, count_objects=True, verbose=15)
 
-    f = []
-    mypath = "./"
-    for (dirpath, dirnames, filenames) in walk(mypath):
-        f.extend(filenames)
-    st.write(f)
+    # check file exist
+    # f = []
+    # mypath = "./"
+    # for (dirpath, dirnames, filenames) in walk(mypath):
+    #     f.extend(filenames)
+    # st.write(f)
 
     # show video
-    # video_file = open("./result/" + str(name_file), 'rb')
-    # video_bytes = video_file.read()
-    # st.video(video_bytes)
+    video_file = open("./haha.mp4", 'rb')
+    video_bytes = video_file.read()
+    st.video(video_bytes)
 
 
 

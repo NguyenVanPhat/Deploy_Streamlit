@@ -108,7 +108,7 @@ class YOLOv7_DeepSORT:
             vid = cv2.VideoCapture(int(video))
         except:
             vid = cv2.VideoCapture(video)
-        st.write("Đọc file Video thành công")
+        # st.write("Đọc file Video thành công")
 
         """Start Code of Phat"""
         # Get FPS of video
@@ -361,7 +361,7 @@ class YOLOv7_DeepSORT:
 
             if output:
                 out.write(result)  # save output video
-                st.write("Ghi frame của Video")
+                # st.write("Ghi frame của Video")
 
             if show_live:
                 cv2.imshow("Output Video", result)
