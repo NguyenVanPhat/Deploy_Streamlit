@@ -8,7 +8,8 @@ from detection_helpers import *
 from tracking_helpers import *
 from bridge_wrapper import *
 from PIL import Image
-import imageio
+import tempfile
+import cv2
 
 st.set_page_config(
     page_title="web app of phat",
@@ -24,14 +25,16 @@ wget.download("https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov
 
 
 uploaded_file = st.file_uploader("Tải video lên", type=["mp4"])
-# click = st.button("Tiến hành Object Traking")
 if uploaded_file is not None:
-    bytes_data = uploaded_file.getvalue()
-    video = imageio.get_reader(bytes_data, 'ffmpeg')
-    # detector = Detector()
-    # detector.load_model('./yolov7x.pt')
-    # tracker = YOLOv7_DeepSORT(reID_model_path="./deep_sort/model_weights/mars-small128.pb", detector=detector)
-    st.write("đã cài thành công")
+    tfile = tempfile.NamedTemporaryFile(delete=False)
+    tfile.write(uploaded_file.read())
+    vf = cv2.VideoCapture(tfile.name)
+    st.write(type(vf))
+# click = st.button("Tiến hành Object Traking")
+# detector = Detector()
+# detector.load_model('./yolov7x.pt')
+# tracker = YOLOv7_DeepSORT(reID_model_path="./deep_sort/model_weights/mars-small128.pb", detector=detector)
+
 
 # if click and (uploaded_file is None):
 #     st.caption("Làm ơn tải lên Video")
