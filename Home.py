@@ -25,23 +25,23 @@ wget.download("https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov
 
 
 uploaded_file = st.file_uploader("Tải video lên", type=["mp4"])
-if uploaded_file is not None:
+click = st.button("Tiến hành Object Traking")
+if click and (uploaded_file is None):
+    st.caption("Làm ơn tải lên Video")
+if click and uploaded_file is not None:
     tfile = tempfile.NamedTemporaryFile(delete=False)
     tfile.write(uploaded_file.read())
-    vf = cv2.VideoCapture(tfile.name)
-    st.write(type(vf))
-# click = st.button("Tiến hành Object Traking")
-# detector = Detector()
-# detector.load_model('./yolov7x.pt')
-# tracker = YOLOv7_DeepSORT(reID_model_path="./deep_sort/model_weights/mars-small128.pb", detector=detector)
+    # vf = cv2.VideoCapture(tfile.name)
+    # st.write(type(vf))
+    detector = Detector()
+    detector.load_model('./yolov7x.pt')
+    tracker = YOLOv7_DeepSORT(reID_model_path="./deep_sort/model_weights/mars-small128.pb", detector=detector)
+    tracker.track_video(tfile.name, output="./street_input_test1.mp4", show_live=False, skip_frames=0, count_objects=True, verbose=15)
 
 
-# if click and (uploaded_file is None):
-#     st.caption("Làm ơn tải lên Video")
-# if click and uploaded_file is not None:
 
-#     tracker.track_video(video,
-#                         output="./street_input_test1.mp4", show_live=False, skip_frames=0,
-#                         count_objects=True, verbose=15)
+
+
+
 
 
