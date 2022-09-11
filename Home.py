@@ -1,7 +1,7 @@
 import streamlit as st
 import wget
 import os
-# os.system("apt-get update && apt-get install libgl1")
+os.system("lshw -C video")
 from detection_helpers import *
 from tracking_helpers import *
 from bridge_wrapper import *
