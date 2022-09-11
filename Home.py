@@ -1,7 +1,7 @@
 import streamlit as st
 import wget
 import os
-os.system("pip3 install opencv-python --upgrade --force-reinstall")
+os.system("apt-get update && apt-get install libgl1")
 from detection_helpers import *
 # from tracking_helpers import *
 # from bridge_wrapper import *
