@@ -22,3 +22,4 @@ pandas>=1.1.4
 seaborn>=0.11.0
 setuptools==62.1.0
 tensorflow
+imageio-ffmpeg

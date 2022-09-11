@@ -15,6 +15,9 @@ st.markdown("<h1 style='text-align: center; color: red;'>🎥 Get Video Random �
 st.header('')
 st.header('')
 path = ""
+
 # os.system("wget https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7x.pt")
 wget.download("https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7x.pt")
+detector = Detector()
+detector.load_model('./yolov7x.pt',)
 st.write("đã cài thành công")
