@@ -359,7 +359,9 @@ class YOLOv7_DeepSORT:
             result = np.asarray(frame)
             result = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
 
-            if output: out.write(result)  # save output video
+            if output:
+                out.write(result)  # save output video
+                st.write("Ghi frame của Video")
 
             if show_live:
                 cv2.imshow("Output Video", result)
