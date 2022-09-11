@@ -27,12 +27,12 @@ wget.download("https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov
 
 
 uploaded_file = st.file_uploader("Tải video lên", type=["mp4"])
-click = st.button("Tiến hành Object Traking")
+# click = st.button("Tiến hành Object Traking")
 
-if click and (uploaded_file is None):
-    st.caption("Làm ơn tải lên Video")
+# if click and (uploaded_file is None):
+#     st.caption("Làm ơn tải lên Video")
 
-if click and uploaded_file is not None:
+if uploaded_file is not None:
     name_file = uploaded_file.name
     tfile = tempfile.NamedTemporaryFile(delete=False)
     tfile.write(uploaded_file.read())
