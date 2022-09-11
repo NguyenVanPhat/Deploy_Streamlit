@@ -26,10 +26,10 @@ wget.download("https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov
 
 uploaded_file = st.file_uploader("Tải video lên", type=["mp4"])
 click = st.button("Tiến hành Object Traking")
-name_file = uploaded_file.name
 if click and (uploaded_file is None):
     st.caption("Làm ơn tải lên Video")
 if click and uploaded_file is not None:
+    name_file = uploaded_file.name
     tfile = tempfile.NamedTemporaryFile(delete=False)
     tfile.write(uploaded_file.read())
     # vf = cv2.VideoCapture(tfile.name)
@@ -38,7 +38,10 @@ if click and uploaded_file is not None:
     detector.load_model('./yolov7x.pt')
     tracker = YOLOv7_DeepSORT(reID_model_path="./deep_sort/model_weights/mars-small128.pb", detector=detector)
     tracker.track_video(tfile.name, output="./result/" + str(name_file), show_live=False, skip_frames=0, count_objects=True, verbose=15)
-
+    # show video
+    video_file = open("./result/" + str(name_file), 'rb')
+    video_bytes = video_file.read()
+    st.video(video_bytes)
 
 
 
