@@ -3,6 +3,7 @@ A Moduele which binds Yolov7 repo with Deepsort with modifications
 '''
 
 import os
+import streamlit as st
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # comment out below line to enable tensorflow logging outputs
 import time
@@ -107,7 +108,8 @@ class YOLOv7_DeepSORT:
             vid = cv2.VideoCapture(int(video))
         except:
             vid = cv2.VideoCapture(video)
-
+        st.write("Đọc file Video thành công")
+        """
         """Start Code of Phat"""
         # Get FPS of video
         import imageio
@@ -364,3 +366,4 @@ class YOLOv7_DeepSORT:
                 if cv2.waitKey(1) & 0xFF == ord('q'): break
 
         cv2.destroyAllWindows()
+        """
