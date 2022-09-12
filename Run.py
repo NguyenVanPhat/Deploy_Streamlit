@@ -6,6 +6,8 @@ import cv2
 import tempfile
 from os import walk
 from os.path import exists
+import shutil
+
 
 
 
@@ -30,7 +32,7 @@ from os.path import exists
 # fps = vf.get(cv2.CAP_PROP_FPS)
 # st.write(int(fps))
 
-print(exists("./train.py"))
+os.remove("./traced_model.pt")
 
 # check file in folder
 # f = []
