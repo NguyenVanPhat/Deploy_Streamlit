@@ -22,26 +22,20 @@ st.header('')
 st.header('')
 path = ""
 
+if not exists("./yolov7x.pt"):
+    wget.download("https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7x.pt")
+
 
 # os.system("wget https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7x.pt")
 
-class FileReference:
-    def __init__(self, filename):
-        self.filename = filename
-
-def hash_file_reference(file_reference):
-    with open(file_reference.filename) as f:
-      return f.read()
 
 # @st.cache(hash_funcs={"MyUnhashableClass": lambda _: None})
-@st.cache(hash_funcs={FileReference: hash_file_reference})
-def load_model():
-    if not exists("./yolov7x.pt"):
-        wget.download("https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7x.pt")
+@st.cache
+def load_model(text):
     detector = Detector()
     detector.load_model('./yolov7x.pt')
-    tracker_temp = YOLOv7_DeepSORT(reID_model_path="./deep_sort/model_weights/mars-small128.pb", detector=detector)
-    return tracker_temp
+    tracker = YOLOv7_DeepSORT(reID_model_path="./deep_sort/model_weights/mars-small128.pb", detector=detector)
+    tracker.track_video(video=str(text), output="./haha.mp4", show_live=False, skip_frames=0, count_objects=True,verbose=15)
 
 
 # click = st.button("Tiến hành Object Traking")
@@ -58,9 +52,8 @@ if uploaded_file is not None:
 
     # st.write("Input: ", tfile.name)
     # st.write("Ouput: ", "./result/haha.mp4")
-    tracker = load_model()
-    tracker.track_video(video=str(tfile.name), output="./haha.mp4", show_live=False, skip_frames=0, count_objects=True,
-                        verbose=15)
+    load_model(tfile.name)
+
 
     # check file exist
     # f = []
