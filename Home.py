@@ -41,8 +41,10 @@ def load_model(text):
 
 # if click and (uploaded_file is None):
 #     st.caption("Làm ơn tải lên Video")
-uploaded_file = st.file_uploader("Tải video lên", type=["mp4"])
-if uploaded_file is not None:
+detector = load_model("./yolov7x.pt")
+uploaded_file = st.file_uploader("Tải video lên", type=["mp4", "jpg", "png"])
+
+if uploaded_file is not None and uploaded_file.type == "video/mp4":
     name_file = uploaded_file.name
     tfile = tempfile.NamedTemporaryFile(delete=False)
     tfile.write(uploaded_file.read())
@@ -51,7 +53,7 @@ if uploaded_file is not None:
 
     # st.write("Input: ", tfile.name)
     # st.write("Ouput: ", "./result/haha.mp4")
-    detector = load_model("./yolov7x.pt")
+
     tracker = YOLOv7_DeepSORT(reID_model_path="./deep_sort/model_weights/mars-small128.pb", detector=detector)
     tracker.track_video(video=str(tfile.name), output="./haha.mp4", show_live=False, skip_frames=0, count_objects=True,
                         verbose=15)
@@ -67,3 +69,6 @@ if uploaded_file is not None:
     # detector = 0
     # tracker = 0
     # os.remove("./traced_model.pt")
+
+if uploaded_file is not None and (uploaded_file.type == "image/jpeg" or uploaded_file.type == "image/png"):
+    pass
