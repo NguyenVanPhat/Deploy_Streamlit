@@ -9,7 +9,7 @@ from os.path import exists
 import shutil
 
 # uploaded_file = st.file_uploader("Tải video lên", type=["mp4", "jpg"])
-uploaded_file = st.file_uploader("Tải video lên")
+uploaded_file = st.file_uploader("Tải video lên", type=["jpeg"])
 if uploaded_file is not None:
     st.write(uploaded_file.type)
     st.write(type(uploaded_file.type))
