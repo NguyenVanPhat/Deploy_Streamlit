@@ -13,7 +13,7 @@ import tempfile
 # import cv2
 
 st.set_page_config(
-    page_title="web app of phat",
+    page_title="Web_App_Of_Phat",
     page_icon="💽",
 )
 st.markdown("<h1 style='text-align: center; color: red;'>🎥 Web App of Phat 📀</h1>", unsafe_allow_html=True)
@@ -53,22 +53,8 @@ if uploaded_file is not None:
     # st.write(f)
 
     st.subheader("Đã xử lý xong video !")
-    st.write("Bạn có thể xem ngay nếu Video có thời lượng dưới 5s")
-    click_show = st.button("Xem Video")
-    if click_show:
-        # show video
-        video_file = open("./haha.mp4", 'rb')
-        # video_bytes = video_file.read()
-        st.video(video_file)
-
-    st.write("Bạn cần phải Tải xuống nếu Video có thời lượng trên 5s")
-    with open("./haha.mp4", "rb") as file:
-        btn = st.download_button(
-            label="Download",
-            data=file,
-            file_name="result_video.mp4",
-            mime="mp4"
-        )
+    st.write('Vào tab "Xem Video" nếu Video có thời lượng dưới 4s')
+    st.write('Vào tab "Tải Video" nếu Video có thời lượng trên 4s')
 
 
 
