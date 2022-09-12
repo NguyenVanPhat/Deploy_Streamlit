@@ -25,7 +25,16 @@ path = ""
 
 # os.system("wget https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7x.pt")
 
-@st.cache(hash_funcs={"MyUnhashableClass": lambda _: None})
+class FileReference:
+    def __init__(self, filename):
+        self.filename = filename
+
+def hash_file_reference(file_reference):
+    with open(file_reference.filename) as f:
+      return f.read()
+
+# @st.cache(hash_funcs={"MyUnhashableClass": lambda _: None})
+@st.cache(hash_funcs={FileReference: hash_file_reference})
 def load_model():
     if not exists("./yolov7x.pt"):
         wget.download("https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7x.pt")
