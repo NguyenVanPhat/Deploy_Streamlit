@@ -25,7 +25,7 @@ path = ""
 
 # os.system("wget https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7x.pt")
 
-@st.cache
+@st.cache(hash_funcs={"MyUnhashableClass": lambda _: None})
 def load_model():
     if not exists("./yolov7x.pt"):
         wget.download("https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7x.pt")
