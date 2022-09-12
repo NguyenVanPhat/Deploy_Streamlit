@@ -52,10 +52,23 @@ if uploaded_file is not None:
     #     f.extend(filenames)
     # st.write(f)
 
-    # show video
-    video_file = open("./haha.mp4", 'rb')
-    # video_bytes = video_file.read()
-    st.video(video_file)
+    st.subheader("Đã xử lý xong video !")
+    st.write("Bạn có thể xem ngay nếu Video có thời lượng dưới 5s")
+    click_show = st.button("Xem Video")
+    if click_show:
+        # show video
+        video_file = open("./haha.mp4", 'rb')
+        # video_bytes = video_file.read()
+        st.video(video_file)
+
+    st.write("Bạn cần phải Tải xuống nếu Video có thời lượng trên 5s")
+    with open("./haha.mp4", "rb") as file:
+        btn = st.download_button(
+            label="Download",
+            data=file,
+            file_name="result_video.mp4",
+            mime="mp4"
+        )
 
 
 
