@@ -45,7 +45,7 @@ def load_model(text):
 #     st.caption("Làm ơn tải lên Video")
 detector = load_model("./yolov7x.pt")
 uploaded_file = st.file_uploader("Tải video lên", type=["mp4", "jpg", "png"])
-global choose_of_user
+# global choose_of_user
 if uploaded_file is not None and uploaded_file.type == "video/mp4":
     name_file = uploaded_file.name
     tfile = tempfile.NamedTemporaryFile(delete=False)
@@ -68,7 +68,7 @@ if uploaded_file is not None and uploaded_file.type == "video/mp4":
 
     st.subheader("Đã xử lý xong video !")
     st.write('Vào tab "Xem Video" để xem video kết quả')
-    choose_of_user = "video"
+    # choose_of_user = "video"
     # detector = 0
     # tracker = 0
     # os.remove("./traced_model.pt")
@@ -82,6 +82,8 @@ if uploaded_file is not None and (uploaded_file.type == "image/jpeg" or uploaded
 
     if len(result.shape) == 3:  # If it is image, convert it to proper image. detector will give "BGR" image
         result = Image.fromarray(cv2.cvtColor(result, cv2.COLOR_BGR2RGB))
-        cv2.imwrite("./haha.jpg", result)
-        choose_of_user = "image"
+        # cv2.imwrite("./haha.jpg", result)
+        # choose_of_user = "image"
+        # image = Image.open('./haha.jpg')
+        st.image(result, caption='Image Result')
 
