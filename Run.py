@@ -7,14 +7,18 @@ import tempfile
 from os import walk
 
 
+
 # os.system("streamlit run home.py")
 # wget.download("https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7x.pt")
 # phat_test()
-uploaded_file = st.file_uploader("Tải video lên", type=["mp4"])
 
-if uploaded_file is not None:
-    name_file = uploaded_file.name
-    st.write("./result/" + str(name_file))
+
+video1 = open("street_input.mp4", "rb")
+st.video(video1)
+# uploaded_file = st.file_uploader("Tải video lên", type=["mp4"])
+# if uploaded_file is not None:
+#     name_file = uploaded_file.name
+#     st.write("./result/" + str(name_file))
 
 
 # get FPS

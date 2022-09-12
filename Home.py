@@ -8,9 +8,9 @@ from os import walk
 from detection_helpers import *
 from tracking_helpers import *
 from bridge_wrapper import *
-from PIL import Image
+# from PIL import Image
 import tempfile
-import cv2
+# import cv2
 
 st.set_page_config(
     page_title="web app of phat",
@@ -54,8 +54,8 @@ if uploaded_file is not None:
 
     # show video
     video_file = open("./haha.mp4", 'rb')
-    video_bytes = video_file.read()
-    st.video(video_bytes)
+    # video_bytes = video_file.read()
+    st.video(video_file)
 
 
 
