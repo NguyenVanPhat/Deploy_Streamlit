@@ -5,6 +5,7 @@ import streamlit as st
 import cv2
 import tempfile
 from os import walk
+from os.path import exists
 
 
 
@@ -13,8 +14,8 @@ from os import walk
 # phat_test()
 
 
-video1 = open("street_input.mp4", "rb")
-st.video(video1)
+# video1 = open("street_input.mp4", "rb")
+# st.video(video1)
 # uploaded_file = st.file_uploader("Tải video lên", type=["mp4"])
 # if uploaded_file is not None:
 #     name_file = uploaded_file.name
@@ -29,7 +30,7 @@ st.video(video1)
 # fps = vf.get(cv2.CAP_PROP_FPS)
 # st.write(int(fps))
 
-
+print(exists("./train.py"))
 
 # check file in folder
 # f = []
