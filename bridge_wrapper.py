@@ -168,6 +168,7 @@ class YOLOv7_DeepSORT:
             print("\n FRAME = ", frame_num)
             percent_current = round(frame_num/total_frame*100)
             my_bar.progress(percent_current)
+            
             # nếu "skip_frames" có giá trị, thì khi Frame chạy đến vị trí "skip_frames" quy định sẽ chạy..
             # lệnh "continue" khi đó sẽ bỏ qua khối xử lý bên dưới và quay lại loop while bên trên cho..
             # đến hết video, đồng nghĩa video đầu ra sẽ ko có các frame từ "skip_frames" trở đi.
