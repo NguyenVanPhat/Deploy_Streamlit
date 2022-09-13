@@ -15,14 +15,25 @@ import time
 #     st.write(uploaded_file.type)
 #     st.write(type(uploaded_file.type))
 
-cap = cv2.VideoCapture("People_Demo.mp4")
-length = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-length_100 = round(length*(100/length))
+def show_size_disk(path):
+    size = 0
+    for path, dirs, files in os.walk(path):
+        for f in files:
+            fp = os.path.join(path, f)
+            size += os.path.getsize(fp)
+    return size
+a = show_size_disk("./")
+print(a)
 
-my_bar = st.progress(0)
-for percent_complete in range(length_100):
-     time.sleep(0.1)
-     my_bar.progress(percent_complete)
+
+# cap = cv2.VideoCapture("People_Demo.mp4")
+# length = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+# length_100 = round(length*(100/length))
+#
+# my_bar = st.progress(0)
+# for percent_complete in range(length_100):
+#      time.sleep(0.1)
+#      my_bar.progress(percent_complete)
 
 
 # os.system("streamlit run home.py")
