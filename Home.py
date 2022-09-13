@@ -51,6 +51,7 @@ if uploaded_file is not None and uploaded_file.type == "video/mp4":
     # giải phóng dung lượng bằng cách xoá file Result Video cũ
     if exists("./haha.mp4"):
         os.remove("./haha.mp4")
+        st.write("Đã xoá video cũ")
 
     name_file = uploaded_file.name
     tfile = tempfile.NamedTemporaryFile(delete=False)
@@ -79,7 +80,7 @@ if uploaded_file is not None and uploaded_file.type == "video/mp4":
     # os.remove("./traced_model.pt")
 
 if uploaded_file is not None and (uploaded_file.type == "image/jpeg" or uploaded_file.type == "image/png" or uploaded_file.type == "image/jpeg"):
-    
+
     name_file = uploaded_file.name
     tfile = tempfile.NamedTemporaryFile(delete=False)
     tfile.write(uploaded_file.read())
