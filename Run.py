@@ -7,12 +7,22 @@ import tempfile
 from os import walk
 from os.path import exists
 import shutil
+import time
 
 # uploaded_file = st.file_uploader("Tải video lên", type=["mp4", "jpg"])
-uploaded_file = st.file_uploader("Tải video lên", type=["jpeg"])
-if uploaded_file is not None:
-    st.write(uploaded_file.type)
-    st.write(type(uploaded_file.type))
+# uploaded_file = st.file_uploader("Tải video lên", type=["jpeg"])
+# if uploaded_file is not None:
+#     st.write(uploaded_file.type)
+#     st.write(type(uploaded_file.type))
+
+cap = cv2.VideoCapture("People_Demo.mp4")
+length = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+length_100 = round(length*(100/length))
+
+my_bar = st.progress(0)
+for percent_complete in range(length_100):
+     time.sleep(0.1)
+     my_bar.progress(percent_complete)
 
 
 # os.system("streamlit run home.py")
