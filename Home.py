@@ -22,8 +22,6 @@ st.header('')
 st.header('')
 path = ""
 
-if not exists("./yolov7x.pt"):
-    wget.download("https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7x.pt")
 
 
 # os.system("wget https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7x.pt")
@@ -34,8 +32,11 @@ if not exists("./yolov7x.pt"):
 # @st.cache(hash_funcs={"MyUnhashableClass": lambda _: None})
 @st.cache
 def load_model(text):
+    wget.download("https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7x.pt")
     detector_temp = Detector()
     detector_temp.load_model(text)
+    os.remove(text)
+    os.remove("./traced_model.pt")
     return detector_temp
 
 
@@ -47,6 +48,10 @@ detector = load_model("./yolov7x.pt")
 uploaded_file = st.file_uploader("Tải video lên", type=["mp4", "jpg", "png", "jpeg"])
 # global choose_of_user
 if uploaded_file is not None and uploaded_file.type == "video/mp4":
+    # giải phóng dung lượng bằng cách xoá file Result Video cũ
+    if exists("./haha.mp4"):
+        os.remove("./haha.mp4")
+
     name_file = uploaded_file.name
     tfile = tempfile.NamedTemporaryFile(delete=False)
     tfile.write(uploaded_file.read())
@@ -74,6 +79,7 @@ if uploaded_file is not None and uploaded_file.type == "video/mp4":
     # os.remove("./traced_model.pt")
 
 if uploaded_file is not None and (uploaded_file.type == "image/jpeg" or uploaded_file.type == "image/png" or uploaded_file.type == "image/jpeg"):
+    
     name_file = uploaded_file.name
     tfile = tempfile.NamedTemporaryFile(delete=False)
     tfile.write(uploaded_file.read())
