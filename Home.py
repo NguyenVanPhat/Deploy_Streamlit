@@ -54,7 +54,7 @@ def load_model(text):
 #     st.caption("Làm ơn tải lên Video")
 detector = load_model("./yolov7x.pt")
 uploaded_file = st.file_uploader("Tải video lên", type=["mp4", "jpg", "png", "jpeg"])
-st.write("dung lượng khởi điểm: ", get_dir_size())
+st.write("dung lượng khởi điểm: ", get_dir_size()*0.000001)
 # global choose_of_user
 if uploaded_file is not None and uploaded_file.type == "video/mp4":
     # giải phóng dung lượng bằng cách xoá file Result Video cũ
@@ -83,7 +83,7 @@ if uploaded_file is not None and uploaded_file.type == "video/mp4":
 
     st.subheader("Đã xử lý xong video !")
     st.write('Vào tab "Xem Video" để xem video kết quả')
-    st.write("dung lượng kết thúc: ", get_dir_size())
+    st.write("dung lượng kết thúc: ", get_dir_size()*0.000001)
     # choose_of_user = "video"
     # detector = 0
     # tracker = 0
