@@ -108,12 +108,7 @@ class YOLOv7_DeepSORT:
         except:
             vid = cv2.VideoCapture(video)
 
-        """Start Code of Phat"""
-        # Get FPS of video
-        import imageio
-        fps_video_src = imageio.get_reader(str(video), 'ffmpeg').get_meta_data()['fps']
-        print("\n FPS of Video: ", fps_video_src)
-        """End Code of Phat"""
+
 
         out = None
         # thiết lập các thông số để lưu video vào đường dẫn đầu ra "output"
@@ -123,6 +118,9 @@ class YOLOv7_DeepSORT:
             fps = int(vid.get(cv2.CAP_PROP_FPS))
             codec = cv2.VideoWriter_fourcc(*"XVID")
             out = cv2.VideoWriter(output, codec, fps, (width, height))
+            fps_video_src = fps
+            print("\n FPS of Video: ", fps_video_src)
+
 
         # "frame_num" dùng để đếm số frame hiện tại trong video
         frame_num = 0
