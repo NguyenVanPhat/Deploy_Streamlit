@@ -57,13 +57,13 @@ def pprint(name_variable, variable):
             "------------------------------------------ KẾT THÚC BIẾN {0} ------------------------------------------".format(
                 name_variable))
 
-def show_size_disk(path):
-    size = 0
-    for path, dirs, files in os.walk(path):
-        for f in files:
-            fp = os.path.join(path, f)
-            size += os.path.getsize(fp)
-    return size
+# def show_size_disk(path):
+#     size = 0
+#     for path, dirs, files in os.walk(path):
+#         for f in files:
+#             fp = os.path.join(path, f)
+#             size += os.path.getsize(fp)
+#     return size
 
 class YOLOv7_DeepSORT:
     """
@@ -175,8 +175,8 @@ class YOLOv7_DeepSORT:
             print("\n FRAME = ", frame_num)
             percent_current = round(frame_num/total_frame*100)
             my_bar.progress(percent_current)
-            if percent_current > 45 and percent_current < 55:
-                st.write("dung lượng giữa quá trình: ", show_size_disk("./"))
+            # if percent_current > 45 and percent_current < 55:
+            #     st.write("dung lượng giữa quá trình: ", show_size_disk("./"))
             # nếu "skip_frames" có giá trị, thì khi Frame chạy đến vị trí "skip_frames" quy định sẽ chạy..
             # lệnh "continue" khi đó sẽ bỏ qua khối xử lý bên dưới và quay lại loop while bên trên cho..
             # đến hết video, đồng nghĩa video đầu ra sẽ ko có các frame từ "skip_frames" trở đi.

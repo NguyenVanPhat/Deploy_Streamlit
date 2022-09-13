@@ -22,13 +22,15 @@ st.header('')
 st.header('')
 path = ""
 
-def show_size_disk(path):
-    size = 0
-    for path, dirs, files in os.walk(path):
-        for f in files:
-            fp = os.path.join(path, f)
-            size += os.path.getsize(fp)
-    return size
+def get_dir_size(path='.'):
+    total = 0
+    with os.scandir(path) as it:
+        for entry in it:
+            if entry.is_file():
+                total += entry.stat().st_size
+            elif entry.is_dir():
+                total += get_dir_size(entry.path)
+    return total
 
 # os.system("wget https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7x.pt")
 
@@ -52,7 +54,7 @@ def load_model(text):
 #     st.caption("Làm ơn tải lên Video")
 detector = load_model("./yolov7x.pt")
 uploaded_file = st.file_uploader("Tải video lên", type=["mp4", "jpg", "png", "jpeg"])
-st.write("dung lượng khởi điểm: ", show_size_disk("./"))
+st.write("dung lượng khởi điểm: ", get_dir_size())
 # global choose_of_user
 if uploaded_file is not None and uploaded_file.type == "video/mp4":
     # giải phóng dung lượng bằng cách xoá file Result Video cũ
@@ -81,7 +83,7 @@ if uploaded_file is not None and uploaded_file.type == "video/mp4":
 
     st.subheader("Đã xử lý xong video !")
     st.write('Vào tab "Xem Video" để xem video kết quả')
-    st.write("dung lượng kết thúc: ", show_size_disk("./"))
+    st.write("dung lượng kết thúc: ", get_dir_size())
     # choose_of_user = "video"
     # detector = 0
     # tracker = 0
