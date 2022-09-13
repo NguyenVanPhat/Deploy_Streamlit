@@ -33,17 +33,22 @@ if not exists("./yolov7x.pt"):
 # điều này giúp Model ko phải load đi load lại tránh tràn RAM hoặc disk của máy chủ (streamlit cloud)
 # @st.cache(hash_funcs={"MyUnhashableClass": lambda _: None})
 @st.cache
-def load_model(text):
+# def load_model(text):
+#     detector_temp = Detector()
+#     detector_temp.load_model(text)
+#     return detector_temp
+def load_model(text1, text2):
     detector_temp = Detector()
-    detector_temp.load_model(text)
-    return detector_temp
+    detector_temp.load_model(text1)
+    tracker_temp = YOLOv7_DeepSORT(reID_model_path=text2, detector=detector_temp)
+    return tracker_temp, detector_temp
 
 
 # click = st.button("Tiến hành Object Traking")
 
 # if click and (uploaded_file is None):
 #     st.caption("Làm ơn tải lên Video")
-detector = load_model("./yolov7x.pt")
+tracker, detector = load_model("./yolov7x.pt", "./deep_sort/model_weights/mars-small128.pb")
 uploaded_file = st.file_uploader("Tải video lên", type=["mp4", "jpg", "png", "jpeg"])
 # global choose_of_user
 if uploaded_file is not None and uploaded_file.type == "video/mp4":
@@ -56,7 +61,6 @@ if uploaded_file is not None and uploaded_file.type == "video/mp4":
     # st.write("Input: ", tfile.name)
     # st.write("Ouput: ", "./result/haha.mp4")
 
-    tracker = YOLOv7_DeepSORT(reID_model_path="./deep_sort/model_weights/mars-small128.pb", detector=detector)
     tracker.track_video(video=str(tfile.name), output="./haha.mp4", show_live=False, skip_frames=0, count_objects=True,
                         verbose=15)
     # check file exist
