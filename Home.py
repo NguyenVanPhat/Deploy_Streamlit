@@ -31,8 +31,8 @@ if not exists("./yolov7x.pt"):
 # "@st.cache" sẽ kiểm tra xem nếu "text" truyền vào ko thay đổi thì hàm sẽ trả ra cùng 1 kết quả so với lần..
 # chạy trước, Do đó nó sẽ ko chạy nữa mà lấy luôn kết quả của lần chạy trước (nghĩa là chỉ chạy 1 lần duy nhất)
 # điều này giúp Model ko phải load đi load lại tránh tràn RAM hoặc disk của máy chủ (streamlit cloud)
-# @st.cache(hash_funcs={"MyUnhashableClass": lambda _: None})
-@st.cache
+@st.cache(hash_funcs={"MyUnhashableClass": lambda _: None})
+# @st.cache
 # def load_model(text):
 #     detector_temp = Detector()
 #     detector_temp.load_model(text)
