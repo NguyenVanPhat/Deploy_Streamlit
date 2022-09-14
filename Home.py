@@ -13,6 +13,7 @@ import cv2
 from os.path import exists
 from PIL import Image
 from memory_profiler import profile
+import gc
 
 @profile
 def main_haha():
@@ -93,6 +94,7 @@ def main_haha():
         st.subheader("Đã xử lý xong video !")
         st.write('Vào tab "Xem Video" để xem video kết quả')
         st.write("dung lượng kết thúc: " + str(round(get_dir_size() * 0.000001)) + " Mb")
+        gc.collect()
         # choose_of_user = "video"
         # detector = 0
         # tracker = 0
@@ -114,4 +116,5 @@ def main_haha():
             # image = Image.open('./haha.jpg')
             st.image(result, caption='Image Result')
 
+gc.enable()
 main_haha()
