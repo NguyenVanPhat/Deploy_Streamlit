@@ -14,7 +14,9 @@ from os.path import exists
 from PIL import Image
 from memory_profiler import profile
 
+
 def main_haha():
+    os.system("python -m memory_profiler Home.py")
     st.set_page_config(
         page_title="Web_App_Of_Phat",
         page_icon="😃",
