@@ -45,6 +45,7 @@ def load_model(text):
     detector_temp.load_model(text)
     os.remove(text)
     os.remove("./traced_model.pt")
+    st.write("Đã load Model")
     return detector_temp
 
 
@@ -73,6 +74,9 @@ if uploaded_file is not None and uploaded_file.type == "video/mp4":
     tracker = YOLOv7_DeepSORT(reID_model_path="./deep_sort/model_weights/mars-small128.pb", detector=detector)
     tracker.track_video(video=str(tfile.name), output="./haha.mp4", show_live=False, skip_frames=0, count_objects=True,
                         verbose=15)
+    # Giải phóng dung lượng disk
+    os.remove(str(tfile.name))
+    tracker = 0
     # check file exist
     # f = []
     # mypath = "./"
