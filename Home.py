@@ -88,8 +88,8 @@ def main_haha():
         os.remove(str(tfile.name))
         del tfile
         del tracker
-        # gc.collect(generation=2)
-        gc.collect()
+        gc.collect(generation=2)
+        # gc.collect()
         # del name_file
         # del a
 
