@@ -77,6 +77,8 @@ if uploaded_file is not None and uploaded_file.type == "video/mp4":
     # Giải phóng dung lượng disk
     os.remove(str(tfile.name))
     tracker = 0
+    name_file = 0
+    tfile = 0
     # check file exist
     # f = []
     # mypath = "./"
