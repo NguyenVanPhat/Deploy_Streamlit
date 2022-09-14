@@ -15,9 +15,11 @@ from PIL import Image
 from memory_profiler import profile
 import gc
 
-@profile
+# @profile
 def main_haha():
+    """
     os.system("python -m memory_profiler Home.py")
+    """
     # st.set_page_config(
     #     page_title="Web_App_Of_Phat",
     #     # page_icon="😃",
@@ -66,7 +68,7 @@ def main_haha():
         # giải phóng dung lượng bằng cách xoá file Result Video cũ
         if exists("./haha.mp4"):
             os.remove("./haha.mp4")
-            st.write("Đã xoá video cũ")
+            # st.write("Đã xoá video cũ")
         # a = get_dir_size()
         # st.write("dung lượng khởi điểm: " + str(round(a * 0.000001)) + " Mb")
         # name_file = uploaded_file.name
@@ -86,7 +88,8 @@ def main_haha():
         os.remove(str(tfile.name))
         del tfile
         del tracker
-        gc.collect(generation=2)
+        # gc.collect(generation=2)
+        gc.collect()
         # del name_file
         # del a
 
