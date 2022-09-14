@@ -45,7 +45,7 @@ def load_model(text):
     detector_temp.load_model(text)
     os.remove(text)
     os.remove("./traced_model.pt")
-    st.write("Đã load Model")
+    # st.write("Đã load Model")
     return detector_temp
 
 
