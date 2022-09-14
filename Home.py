@@ -15,9 +15,9 @@ from PIL import Image
 
 st.set_page_config(
     page_title="Web_App_Of_Phat",
-    page_icon="💽",
+    page_icon="😃",
 )
-st.markdown("<h1 style='text-align: center; color: red;'>🎥 Web App of Phat 📀</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: red;'>😃 Web App of Phat 😂</h1>", unsafe_allow_html=True)
 st.header('')
 st.header('')
 path = ""
@@ -60,7 +60,7 @@ if uploaded_file is not None and uploaded_file.type == "video/mp4":
     if exists("./haha.mp4"):
         os.remove("./haha.mp4")
         st.write("Đã xoá video cũ")
-    st.write("dung lượng khởi điểm: ", round(get_dir_size() * 0.000001))
+    st.write("dung lượng khởi điểm: " + str(round(get_dir_size() * 0.000001)) + " Mb")
     name_file = uploaded_file.name
     tfile = tempfile.NamedTemporaryFile(delete=False)
     tfile.write(uploaded_file.read())
@@ -82,7 +82,7 @@ if uploaded_file is not None and uploaded_file.type == "video/mp4":
 
     st.subheader("Đã xử lý xong video !")
     st.write('Vào tab "Xem Video" để xem video kết quả')
-    st.write("dung lượng kết thúc: ", round(get_dir_size()*0.000001))
+    st.write("dung lượng kết thúc: " + str(round(get_dir_size()*0.000001)) + " Mb")
     # choose_of_user = "video"
     # detector = 0
     # tracker = 0

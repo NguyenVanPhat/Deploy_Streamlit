@@ -15,15 +15,24 @@ import time
 #     st.write(uploaded_file.type)
 #     st.write(type(uploaded_file.type))
 
-def show_size_disk(path):
-    size = 0
-    for path, dirs, files in os.walk(path):
-        for f in files:
-            fp = os.path.join(path, f)
-            size += os.path.getsize(fp)
-    return size
-a = show_size_disk("./")
-print(a)
+# def show_size_disk(path):
+#     size = 0
+#     for path, dirs, files in os.walk(path):
+#         for f in files:
+#             fp = os.path.join(path, f)
+#             size += os.path.getsize(fp)
+#     return size
+def get_dir_size(path='.'):
+    total = 0
+    with os.scandir(path) as it:
+        for entry in it:
+            if entry.is_file():
+                total += entry.stat().st_size
+            elif entry.is_dir():
+                total += get_dir_size(entry.path)
+    return total
+a = round(get_dir_size() * 0.000001)
+st.write("dung lượng: " + str(a) + " Mb")
 
 
 # cap = cv2.VideoCapture("People_Demo.mp4")
