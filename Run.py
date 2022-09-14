@@ -8,6 +8,7 @@ from os import walk
 from os.path import exists
 import shutil
 import time
+from memory_profiler import profile
 
 # uploaded_file = st.file_uploader("Tải video lên", type=["mp4", "jpg"])
 # uploaded_file = st.file_uploader("Tải video lên", type=["jpeg"])
@@ -22,6 +23,7 @@ import time
 #             fp = os.path.join(path, f)
 #             size += os.path.getsize(fp)
 #     return size
+@profile
 def get_dir_size(path='.'):
     total = 0
     with os.scandir(path) as it:
@@ -31,8 +33,9 @@ def get_dir_size(path='.'):
             elif entry.is_dir():
                 total += get_dir_size(entry.path)
     return total
-a = round(get_dir_size() * 0.000001)
-st.write("dung lượng: " + str(a) + " Mb")
+# a = round(get_dir_size() * 0.000001)
+# st.write("dung lượng: " + str(a) + " Mb")
+os.system("python -m memory_profiler Run.py")
 
 
 # cap = cv2.VideoCapture("People_Demo.mp4")
