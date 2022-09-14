@@ -17,9 +17,7 @@ import gc
 
 @profile
 def main_haha():
-    gc.set_threshold(300, 5, 5)
-    st.write("Số đối tượng không thể truy cập được GC thu thập: ", gc.collect())
-    st.write("Rác không thể thu gom: ", gc.garbage)
+
     os.system("python -m memory_profiler Home.py")
     # st.set_page_config(
     #     page_title="Web_App_Of_Phat",
@@ -29,7 +27,9 @@ def main_haha():
     st.header('')
     st.header('')
     path = ""
-
+    gc.set_threshold(300, 5, 5)
+    st.write("Số đối tượng không thể truy cập được GC thu thập: ", gc.collect())
+    st.write("Rác không thể thu gom: ", gc.garbage)
     # def get_dir_size(path='.'):
     #     total = 0
     #     with os.scandir(path) as it:
