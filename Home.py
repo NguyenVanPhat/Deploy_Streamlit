@@ -17,6 +17,7 @@ import gc
 
 @profile
 def main_haha():
+    gc.collect()
     os.system("python -m memory_profiler Home.py")
     st.set_page_config(
         page_title="Web_App_Of_Phat",
