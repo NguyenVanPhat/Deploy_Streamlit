@@ -65,7 +65,8 @@ def main_haha():
         if exists("./haha.mp4"):
             os.remove("./haha.mp4")
             st.write("Đã xoá video cũ")
-        st.write("dung lượng khởi điểm: " + str(round(get_dir_size() * 0.000001)) + " Mb")
+        a = get_dir_size()
+        st.write("dung lượng khởi điểm: " + str(round(a * 0.000001)) + " Mb")
         name_file = uploaded_file.name
         tfile = tempfile.NamedTemporaryFile(delete=False)
         tfile.write(uploaded_file.read())
@@ -81,9 +82,11 @@ def main_haha():
                             verbose=15)
         # Giải phóng dung lượng disk
         os.remove(str(tfile.name))
-        tracker = 0
-        name_file = 0
-        tfile = 0
+        del tfile
+        del tracker
+        del name_file
+        del a
+
         # check file exist
         # f = []
         # mypath = "./"
@@ -94,7 +97,7 @@ def main_haha():
         st.subheader("Đã xử lý xong video !")
         st.write('Vào tab "Xem Video" để xem video kết quả')
         st.write("dung lượng kết thúc: " + str(round(get_dir_size() * 0.000001)) + " Mb")
-        gc.collect()
+        # gc.collect()
         # choose_of_user = "video"
         # detector = 0
         # tracker = 0
