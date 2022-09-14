@@ -16,6 +16,7 @@ from memory_profiler import profile
 
 @profile
 def main_haha():
+    os.system("python -m memory_profiler Home.py")
     st.set_page_config(
         page_title="Web_App_Of_Phat",
         page_icon="😃",
@@ -58,61 +59,59 @@ def main_haha():
     detector = load_model("./yolov7x.pt")
     uploaded_file = st.file_uploader("Tải video lên", type=["mp4", "jpg", "png", "jpeg"])
     # global choose_of_user
-    @profile
-    def run_interface():
-        if uploaded_file is not None and uploaded_file.type == "video/mp4":
-            os.system("python -m memory_profiler Home.py")
-            # giải phóng dung lượng bằng cách xoá file Result Video cũ
-            if exists("./haha.mp4"):
-                os.remove("./haha.mp4")
-                st.write("Đã xoá video cũ")
-            st.write("dung lượng khởi điểm: " + str(round(get_dir_size() * 0.000001)) + " Mb")
-            name_file = uploaded_file.name
-            tfile = tempfile.NamedTemporaryFile(delete=False)
-            tfile.write(uploaded_file.read())
-            # vf = cv2.VideoCapture(tfile.name)
-            # st.write(type(vf))
+    if uploaded_file is not None and uploaded_file.type == "video/mp4":
+        # giải phóng dung lượng bằng cách xoá file Result Video cũ
+        if exists("./haha.mp4"):
+            os.remove("./haha.mp4")
+            st.write("Đã xoá video cũ")
+        st.write("dung lượng khởi điểm: " + str(round(get_dir_size() * 0.000001)) + " Mb")
+        name_file = uploaded_file.name
+        tfile = tempfile.NamedTemporaryFile(delete=False)
+        tfile.write(uploaded_file.read())
+        # vf = cv2.VideoCapture(tfile.name)
+        # st.write(type(vf))
 
-            # st.write("Input: ", tfile.name)
-            # st.write("Ouput: ", "./result/haha.mp4")
+        # st.write("Input: ", tfile.name)
+        # st.write("Ouput: ", "./result/haha.mp4")
 
-            tracker = YOLOv7_DeepSORT(reID_model_path="./deep_sort/model_weights/mars-small128.pb", detector=detector)
-            tracker.track_video(video=str(tfile.name), output="./haha.mp4", show_live=False, skip_frames=0,
-                                count_objects=True,
-                                verbose=15)
-            # Giải phóng dung lượng disk
-            os.remove(str(tfile.name))
-            tracker = 0
-            name_file = 0
-            tfile = 0
-            # check file exist
-            # f = []
-            # mypath = "./"
-            # for (dirpath, dirnames, filenames) in walk(mypath):
-            #     f.extend(filenames)
-            # st.write(f)
+        tracker = YOLOv7_DeepSORT(reID_model_path="./deep_sort/model_weights/mars-small128.pb", detector=detector)
+        tracker.track_video(video=str(tfile.name), output="./haha.mp4", show_live=False, skip_frames=0,
+                            count_objects=True,
+                            verbose=15)
+        # Giải phóng dung lượng disk
+        os.remove(str(tfile.name))
+        tracker = 0
+        name_file = 0
+        tfile = 0
+        # check file exist
+        # f = []
+        # mypath = "./"
+        # for (dirpath, dirnames, filenames) in walk(mypath):
+        #     f.extend(filenames)
+        # st.write(f)
 
-            st.subheader("Đã xử lý xong video !")
-            st.write('Vào tab "Xem Video" để xem video kết quả')
-            st.write("dung lượng kết thúc: " + str(round(get_dir_size() * 0.000001)) + " Mb")
-            # choose_of_user = "video"
-            # detector = 0
-            # tracker = 0
-            # os.remove("./traced_model.pt")
+        st.subheader("Đã xử lý xong video !")
+        st.write('Vào tab "Xem Video" để xem video kết quả')
+        st.write("dung lượng kết thúc: " + str(round(get_dir_size() * 0.000001)) + " Mb")
+        # choose_of_user = "video"
+        # detector = 0
+        # tracker = 0
+        # os.remove("./traced_model.pt")
 
-        if uploaded_file is not None and (uploaded_file.type == "image/jpeg" or uploaded_file.type == "image/png" or uploaded_file.type == "image/jpeg"):
-            name_file = uploaded_file.name
-            tfile = tempfile.NamedTemporaryFile(delete=False)
-            tfile.write(uploaded_file.read())
+    if uploaded_file is not None and (
+            uploaded_file.type == "image/jpeg" or uploaded_file.type == "image/png" or uploaded_file.type == "image/jpeg"):
 
-            result = detector.detect(str(tfile.name), plot_bb=True)
+        name_file = uploaded_file.name
+        tfile = tempfile.NamedTemporaryFile(delete=False)
+        tfile.write(uploaded_file.read())
 
-            if len(result.shape) == 3:  # If it is image, convert it to proper image. detector will give "BGR" image
-                result = Image.fromarray(cv2.cvtColor(result, cv2.COLOR_BGR2RGB))
-                # cv2.imwrite("./haha.jpg", result)
-                # choose_of_user = "image"
-                # image = Image.open('./haha.jpg')
-                st.image(result, caption='Image Result')
+        result = detector.detect(str(tfile.name), plot_bb=True)
 
-os.system("python -m memory_profiler Home.py")
+        if len(result.shape) == 3:  # If it is image, convert it to proper image. detector will give "BGR" image
+            result = Image.fromarray(cv2.cvtColor(result, cv2.COLOR_BGR2RGB))
+            # cv2.imwrite("./haha.jpg", result)
+            # choose_of_user = "image"
+            # image = Image.open('./haha.jpg')
+            st.image(result, caption='Image Result')
+
 main_haha()
