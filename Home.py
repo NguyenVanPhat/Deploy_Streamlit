@@ -84,10 +84,10 @@ def main_haha():
                             verbose=15)
         # Giải phóng dung lượng disk
         os.remove(str(tfile.name))
-        del tfile
-        del tracker
+        # del tfile
+        # del tracker
         # del detector
-        gc.collect(generation=2)
+        # gc.collect(generation=2)
         # gc.collect()
         # del name_file
         # del a
@@ -123,10 +123,13 @@ def main_haha():
             # choose_of_user = "image"
             # image = Image.open('./haha.jpg')
             st.image(result, caption='Image Result')
-        del result
-        del tfile
-        del detector
-        gc.collect()
+        # del result
+        # del tfile
+        # del detector
+        result = None
+        tfile = None
+        detector = None
+        # gc.collect()
 
-gc.enable()
+# gc.enable()
 main_haha()
