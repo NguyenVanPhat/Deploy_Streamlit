@@ -20,12 +20,6 @@ st.header('')
 
 @profile
 def main_haha():
-    st.write("Len of dir() = ", len(dir()))
-    for name in dir():
-        st.write("name = ", name)
-        if not name.startswith('_'):
-            del globals()[name]
-    gc.collect()
     os.system("python -m memory_profiler Home.py")
     # st.set_page_config(
     #     page_title="Web_App_Of_Phat",
@@ -147,6 +141,12 @@ def main_haha():
         tfile.write(uploaded_file.read())
 
         detect_image(tfile.name)
+        st.write("Len of dir() = ", len(dir()))
+        for name in dir():
+            st.write("name = ", name)
+            if not name.startswith('_'):
+                del globals()[name]
+        gc.collect()
         st.experimental_singleton.clear()
 
         # result = detector.detect(str(tfile.name), plot_bb=True)
