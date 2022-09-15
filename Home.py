@@ -12,15 +12,15 @@ import tempfile
 import cv2
 from os.path import exists
 from PIL import Image
-# from memory_profiler import profile
+from memory_profiler import profile
 import gc
 st.markdown("<h1 style='text-align: center; color: red;'>Web App of Phat</h1>", unsafe_allow_html=True)
 st.header('')
 st.header('')
 
-# @profile
+@profile
 def main_haha():
-    # os.system("python -m memory_profiler Home.py")
+    os.system("python -m memory_profiler Home.py")
     # st.set_page_config(
     #     page_title="Web_App_Of_Phat",
     #     # page_icon="😃",
