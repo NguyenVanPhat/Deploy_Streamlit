@@ -4,15 +4,20 @@ import os
 # sys.path.insert(1, './')
 # from Home import choose_of_user
 # from PIL import Image
+from memory_profiler import profile
 
-click_show = st.button("Xem Video")
-# if click_show and choose_of_user == "video":
-if click_show:
-    # show video
-    video_file = open("./haha.mp4", 'rb')
-    # video_bytes = video_file.read()
-    st.video(video_file)
-    video_file = None
-# if click_show and choose_of_user == "image":
-#     image = Image.open('./haha.jpg')
-#     st.image(image, caption='Image Result')
+@profile
+def main_haha():
+    click_show = st.button("Xem Video")
+    # if click_show and choose_of_user == "video":
+    if click_show:
+        # show video
+        video_file = open("./haha.mp4", 'rb')
+        # video_bytes = video_file.read()
+        st.video(video_file)
+        video_file = None
+    # if click_show and choose_of_user == "image":
+    #     image = Image.open('./haha.jpg')
+    #     st.image(image, caption='Image Result')
+
+main_haha()

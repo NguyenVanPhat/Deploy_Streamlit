@@ -134,6 +134,7 @@ def main_haha():
         detector = None
         # gc.collect()
 
+    uploaded_file = None
 # gc.enable()
 main_haha()
 st.write("Khởi động")
