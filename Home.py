@@ -13,7 +13,7 @@ import cv2
 from os.path import exists
 from PIL import Image
 # from memory_profiler import profile
-# import gc
+import gc
 st.markdown("<h1 style='text-align: center; color: red;'>Web App of Phat</h1>", unsafe_allow_html=True)
 st.header('')
 st.header('')
@@ -162,4 +162,6 @@ def main_haha():
 # gc.enable()
 
 main_haha()
+gc.collect(generation=1)
+gc.collect(generation=2)
 # st.write("Khởi động")

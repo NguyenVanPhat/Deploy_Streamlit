@@ -1,5 +1,6 @@
 import streamlit as st
 import os
+import gc
 # import sys
 # sys.path.insert(1, './')
 # from Home import choose_of_user
@@ -23,3 +24,5 @@ def main_haha():
     #     st.image(image, caption='Image Result')
 
 main_haha()
+gc.collect(generation=1)
+gc.collect(generation=2)

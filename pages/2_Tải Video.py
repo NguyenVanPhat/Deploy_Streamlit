@@ -1,4 +1,5 @@
 import streamlit as st
+import gc
 
 with open("./haha.mp4", "rb") as file:
     btn = st.download_button(
@@ -9,3 +10,5 @@ with open("./haha.mp4", "rb") as file:
     )
 file.close()
 file = None
+gc.collect(generation=1)
+gc.collect(generation=2)
