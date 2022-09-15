@@ -45,7 +45,7 @@ def main_haha():
     # chạy trước, Do đó nó sẽ ko chạy nữa mà lấy luôn kết quả của lần chạy trước (nghĩa là chỉ chạy 1 lần duy nhất)
     # điều này giúp Model ko phải load đi load lại tránh tràn RAM hoặc disk của máy chủ (streamlit cloud)
     # @st.cache(hash_funcs={"MyUnhashableClass": lambda _: None})
-    @st.cache(ttl=5)
+    @st.cache(ttl=15)
     def load_model(text):
         wget.download("https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7x.pt")
         detector_temp = Detector()
