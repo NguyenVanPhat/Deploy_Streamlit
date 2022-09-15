@@ -20,6 +20,10 @@ st.header('')
 
 @profile
 def main_haha():
+    for name in dir():
+        if not name.startswith('_'):
+            del globals()[name]
+    gc.collect()
     os.system("python -m memory_profiler Home.py")
     # st.set_page_config(
     #     page_title="Web_App_Of_Phat",
@@ -162,10 +166,6 @@ def main_haha():
 # gc.enable()
 
 main_haha()
-for name in dir():
-    if not name.startswith('_'):
-        del globals()[name]
-gc.collect()
 # gc.collect(generation=1)
 # gc.collect(generation=2)
 # st.write("Khởi động")
