@@ -15,6 +15,7 @@ from PIL import Image
 from memory_profiler import profile
 import gc
 
+@st.cache(max_entries=5)
 @profile
 def main_haha():
     os.system("python -m memory_profiler Home.py")
@@ -45,7 +46,7 @@ def main_haha():
     # chạy trước, Do đó nó sẽ ko chạy nữa mà lấy luôn kết quả của lần chạy trước (nghĩa là chỉ chạy 1 lần duy nhất)
     # điều này giúp Model ko phải load đi load lại tránh tràn RAM hoặc disk của máy chủ (streamlit cloud)
     # @st.cache(hash_funcs={"MyUnhashableClass": lambda _: None})
-    @st.cache(ttl=15)
+    @st.cache()
     def load_model(text):
         wget.download("https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7x.pt")
         detector_temp = Detector()
@@ -136,5 +137,6 @@ def main_haha():
 
     uploaded_file = None
 # gc.enable()
+
 main_haha()
 st.write("Khởi động")

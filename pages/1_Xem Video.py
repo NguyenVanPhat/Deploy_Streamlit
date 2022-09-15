@@ -6,6 +6,7 @@ import os
 # from PIL import Image
 from memory_profiler import profile
 
+@st.cache(max_entries=5)
 @profile
 def main_haha():
     click_show = st.button("Xem Video")
