@@ -10,5 +10,11 @@ with open("./haha.mp4", "rb") as file:
     )
 file.close()
 file = None
+st.write("Len of dir() = ", len(dir()))
+for name in dir():
+    st.write("Name: ", name)
+    if not name.startswith('_'):
+        del globals()[name]
+gc.collect()
 # gc.collect(generation=1)
 # gc.collect(generation=2)

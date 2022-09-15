@@ -104,12 +104,6 @@ def main_haha():
         # st.write("Input: ", tfile.name)
         # st.write("Ouput: ", "./result/haha.mp4")
         track_vdieo(tfile.name)
-        for name in dir():
-            st.write("name = ", name)
-            print(name)
-            if not name.startswith('_'):
-                del globals()[name]
-        gc.collect()
 
         # Giải phóng dung lượng disk
         os.remove(str(tfile.name))
@@ -148,14 +142,8 @@ def main_haha():
         tfile.write(uploaded_file.read())
 
         detect_image(tfile.name)
-        st.write("Len of dir() = ", len(dir()))
+
         # st.experimental_singleton.clear()
-        for name in dir():
-            st.write("name = ", name)
-            print(name)
-            if not name.startswith('_'):
-                del globals()[name]
-        gc.collect()
 
         # result = detector.detect(str(tfile.name), plot_bb=True)
 
@@ -173,6 +161,12 @@ def main_haha():
         # gc.collect()
 
     uploaded_file = None
+    st.write("Len of dir() = ", len(dir()))
+    for name in dir():
+        st.write("Name: ", name)
+        if not name.startswith('_'):
+            del globals()[name]
+    gc.collect()
 # gc.enable()
 
 main_haha()

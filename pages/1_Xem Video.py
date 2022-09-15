@@ -19,6 +19,12 @@ def main_haha():
         video_file = None
         # video_bytes = video_file.read()
     click_show = None
+    st.write("Len of dir() = ", len(dir()))
+    for name in dir():
+        st.write("Name: ", name)
+        if not name.startswith('_'):
+            del globals()[name]
+    gc.collect()
     # if click_show and choose_of_user == "image":
     #     image = Image.open('./haha.jpg')
     #     st.image(image, caption='Image Result')
