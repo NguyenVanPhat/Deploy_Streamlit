@@ -10,5 +10,5 @@ with open("./haha.mp4", "rb") as file:
     )
 file.close()
 file = None
-gc.collect(generation=1)
-gc.collect(generation=2)
+# gc.collect(generation=1)
+# gc.collect(generation=2)

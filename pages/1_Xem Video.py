@@ -24,5 +24,5 @@ def main_haha():
     #     st.image(image, caption='Image Result')
 
 main_haha()
-gc.collect(generation=1)
-gc.collect(generation=2)
+# gc.collect(generation=1)
+# gc.collect(generation=2)

@@ -162,6 +162,10 @@ def main_haha():
 # gc.enable()
 
 main_haha()
-gc.collect(generation=1)
-gc.collect(generation=2)
+for name in dir():
+    if not name.startswith('_'):
+        del globals()[name]
+gc.collect()
+# gc.collect(generation=1)
+# gc.collect(generation=2)
 # st.write("Khởi động")
