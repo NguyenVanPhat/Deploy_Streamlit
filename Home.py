@@ -54,7 +54,8 @@ def main_haha():
         # st.write("Đã load Model")
         return detector_temp
 
-    @st.cache(max_entries=2)
+    # @st.cache(max_entries=2)
+    @st.experimental_memo
     def track_vdieo(text):
         detector = load_model("./yolov7x.pt")
         tracker = YOLOv7_DeepSORT(reID_model_path="./deep_sort/model_weights/mars-small128.pb", detector=detector)
@@ -64,7 +65,8 @@ def main_haha():
         detector = None
         tracker = None
 
-    @st.cache(max_entries=2)
+    # @st.cache(max_entries=2)
+    @st.experimental_memo
     def detect_image(txt):
         detector = load_model("./yolov7x.pt")
         result = detector.detect(str(txt), plot_bb=True)
@@ -98,7 +100,7 @@ def main_haha():
         # st.write("Input: ", tfile.name)
         # st.write("Ouput: ", "./result/haha.mp4")
         track_vdieo(tfile.name)
-
+        st.experimental_memo.clear()
 
         # Giải phóng dung lượng disk
         os.remove(str(tfile.name))
@@ -137,6 +139,7 @@ def main_haha():
         tfile.write(uploaded_file.read())
 
         detect_image(tfile.name)
+        st.experimental_memo.clear()
 
         # result = detector.detect(str(tfile.name), plot_bb=True)
 
