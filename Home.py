@@ -20,7 +20,9 @@ st.header('')
 
 @profile
 def main_haha():
+    st.write("Len of dir() = ", len(dir()))
     for name in dir():
+        st.write("name = ", name)
         if not name.startswith('_'):
             del globals()[name]
     gc.collect()
