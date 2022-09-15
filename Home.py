@@ -161,9 +161,8 @@ def main_haha():
         # gc.collect()
 
     uploaded_file = None
-    st.write("Len of dir() = ", len(dir()))
     for name in dir():
-        st.write("Name: ", name)
+        # st.write("Name: ", name)
         if not name.startswith('_'):
             del globals()[name]
     gc.collect()
