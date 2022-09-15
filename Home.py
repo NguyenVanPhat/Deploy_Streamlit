@@ -126,7 +126,7 @@ def main_haha():
         del result
         del tfile
         del detector
-        gc.collect(generation=2)
+        gc.collect()
 
 gc.enable()
 main_haha()
