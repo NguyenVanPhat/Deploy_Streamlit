@@ -17,7 +17,7 @@ import gc
 st.markdown("<h1 style='text-align: center; color: red;'>Web App of Phat</h1>", unsafe_allow_html=True)
 st.header('')
 st.header('')
-@st.cache(max_entries=20)
+@st.cache(max_entries=50)
 @profile
 def main_haha():
     os.system("python -m memory_profiler Home.py")
@@ -25,8 +25,6 @@ def main_haha():
     #     page_title="Web_App_Of_Phat",
     #     # page_icon="😃",
     # )
-
-    path = ""
     # gc.set_threshold(300, 5, 5)
     # st.write("Số đối tượng không thể truy cập được GC thu thập: ", gc.collect())
     # st.write("Rác không thể thu gom: ", gc.garbage)
