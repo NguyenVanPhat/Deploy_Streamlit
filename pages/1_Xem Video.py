@@ -13,6 +13,7 @@ def main_haha():
     def show_video():
         video_file = open("./haha.mp4", 'rb')
         st.video(video_file)
+        video_file.close()
         video_file = None
 
     click_show = st.button("Xem Video")

@@ -44,18 +44,18 @@ def main_haha():
     # chạy trước, Do đó nó sẽ ko chạy nữa mà lấy luôn kết quả của lần chạy trước (nghĩa là chỉ chạy 1 lần duy nhất)
     # điều này giúp Model ko phải load đi load lại tránh tràn RAM hoặc disk của máy chủ (streamlit cloud)
     # @st.cache(hash_funcs={"MyUnhashableClass": lambda _: None})
-    @st.cache()
+    @st.experimental_singleton
     def load_model(text):
         wget.download("https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7x.pt")
         detector_temp = Detector()
         detector_temp.load_model(text)
-        os.remove(text)
-        os.remove("./traced_model.pt")
+        # os.remove(text)
+        # os.remove("./traced_model.pt")
         # st.write("Đã load Model")
         return detector_temp
 
     # @st.cache(max_entries=2)
-    @st.experimental_memo
+    @st.experimental_singleton
     def track_vdieo(text):
         detector = load_model("./yolov7x.pt")
         tracker = YOLOv7_DeepSORT(reID_model_path="./deep_sort/model_weights/mars-small128.pb", detector=detector)
@@ -66,7 +66,7 @@ def main_haha():
         tracker = None
 
     # @st.cache(max_entries=2)
-    @st.experimental_memo
+    @st.experimental_singleton
     def detect_image(txt):
         detector = load_model("./yolov7x.pt")
         result = detector.detect(str(txt), plot_bb=True)
@@ -81,7 +81,7 @@ def main_haha():
 
     # if click and (uploaded_file is None):
     #     st.caption("Làm ơn tải lên Video")
-
+    st.experimental_singleton.clear()
     uploaded_file = st.file_uploader("Tải video lên", type=["mp4", "jpg", "png", "jpeg"])
     # global choose_of_user
     if uploaded_file is not None and uploaded_file.type == "video/mp4":
@@ -100,7 +100,7 @@ def main_haha():
         # st.write("Input: ", tfile.name)
         # st.write("Ouput: ", "./result/haha.mp4")
         track_vdieo(tfile.name)
-        st.experimental_memo.clear()
+
 
         # Giải phóng dung lượng disk
         os.remove(str(tfile.name))
@@ -139,7 +139,7 @@ def main_haha():
         tfile.write(uploaded_file.read())
 
         detect_image(tfile.name)
-        st.experimental_memo.clear()
+        st.experimental_singleton.clear()
 
         # result = detector.detect(str(tfile.name), plot_bb=True)
 
