@@ -15,11 +15,9 @@ from PIL import Image
 # from memory_profiler import profile
 import gc
 
-# @profile
+@profile
 def main_haha():
-    """
     os.system("python -m memory_profiler Home.py")
-    """
     # st.set_page_config(
     #     page_title="Web_App_Of_Phat",
     #     # page_icon="😃",
@@ -130,5 +128,5 @@ def main_haha():
         del detector
         gc.collect(generation=2)
 
-# gc.enable()
+gc.enable()
 main_haha()
