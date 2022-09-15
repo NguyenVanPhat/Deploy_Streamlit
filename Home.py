@@ -14,8 +14,10 @@ from os.path import exists
 from PIL import Image
 from memory_profiler import profile
 import gc
-
-@st.cache(max_entries=5)
+st.markdown("<h1 style='text-align: center; color: red;'>Web App of Phat</h1>", unsafe_allow_html=True)
+st.header('')
+st.header('')
+@st.cache(max_entries=20)
 @profile
 def main_haha():
     os.system("python -m memory_profiler Home.py")
@@ -23,9 +25,7 @@ def main_haha():
     #     page_title="Web_App_Of_Phat",
     #     # page_icon="😃",
     # )
-    st.markdown("<h1 style='text-align: center; color: red;'>Web App of Phat</h1>", unsafe_allow_html=True)
-    st.header('')
-    st.header('')
+
     path = ""
     # gc.set_threshold(300, 5, 5)
     # st.write("Số đối tượng không thể truy cập được GC thu thập: ", gc.collect())
