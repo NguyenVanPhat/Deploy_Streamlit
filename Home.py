@@ -136,3 +136,4 @@ def main_haha():
 
 # gc.enable()
 main_haha()
+st.write("Khởi động")
