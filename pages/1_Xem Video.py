@@ -16,6 +16,7 @@ def main_haha():
         # video_bytes = video_file.read()
         st.video(video_file)
         video_file = None
+    click_show = None
     # if click_show and choose_of_user == "image":
     #     image = Image.open('./haha.jpg')
     #     st.image(image, caption='Image Result')
