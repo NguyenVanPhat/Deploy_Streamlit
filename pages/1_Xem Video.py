@@ -12,6 +12,7 @@ if click_show:
     video_file = open("./haha.mp4", 'rb')
     # video_bytes = video_file.read()
     st.video(video_file)
+    video_file = None
 # if click_show and choose_of_user == "image":
 #     image = Image.open('./haha.jpg')
 #     st.image(image, caption='Image Result')

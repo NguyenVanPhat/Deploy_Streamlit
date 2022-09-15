@@ -91,6 +91,9 @@ def main_haha():
         # gc.collect()
         # del name_file
         # del a
+        detector = None
+        tracker = None
+        tfile = None
 
         # check file exist
         # f = []
