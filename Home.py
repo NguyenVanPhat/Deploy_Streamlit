@@ -56,7 +56,7 @@ def main_haha():
 
     # @st.cache(max_entries=2)
     # @st.experimental_singleton
-    @st.experimental_singleton(suppress_st_warning=True)
+    # @st.experimental_singleton(suppress_st_warning=True)
     def track_vdieo(text):
         detector = load_model("./yolov7x.pt")
         tracker = YOLOv7_DeepSORT(reID_model_path="./deep_sort/model_weights/mars-small128.pb", detector=detector)
@@ -68,7 +68,7 @@ def main_haha():
 
     # @st.cache(max_entries=2)
     # @st.experimental_singleton
-    @st.experimental_singleton(suppress_st_warning=True)
+    # @st.experimental_singleton(suppress_st_warning=True)
     def detect_image(txt):
         detector = load_model("./yolov7x.pt")
         result = detector.detect(str(txt), plot_bb=True)
@@ -83,7 +83,9 @@ def main_haha():
 
     # if click and (uploaded_file is None):
     #     st.caption("Làm ơn tải lên Video")
-    st.experimental_singleton.clear()
+
+    # st.experimental_singleton.clear()
+
     uploaded_file = st.file_uploader("Tải video lên", type=["mp4", "jpg", "png", "jpeg"])
     # global choose_of_user
     if uploaded_file is not None and uploaded_file.type == "video/mp4":
@@ -147,7 +149,7 @@ def main_haha():
 
         detect_image(tfile.name)
         st.write("Len of dir() = ", len(dir()))
-        st.experimental_singleton.clear()
+        # st.experimental_singleton.clear()
         for name in dir():
             st.write("name = ", name)
             print(name)
