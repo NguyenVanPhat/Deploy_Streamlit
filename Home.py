@@ -53,7 +53,7 @@ def main_haha():
         os.remove("./traced_model.pt")
         # st.write("Đã load Model")
         return detector_temp
-r
+
     # @st.cache(max_entries=2)
     # @st.experimental_singleton
     # @st.experimental_singleton(suppress_st_warning=True)
