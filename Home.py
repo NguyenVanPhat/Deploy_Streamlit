@@ -12,15 +12,15 @@ import tempfile
 import cv2
 from os.path import exists
 from PIL import Image
-from memory_profiler import profile
+# from memory_profiler import profile
 import gc
 st.markdown("<h1 style='text-align: center; color: red;'>Web App of Phat</h1>", unsafe_allow_html=True)
 st.header('')
 st.header('')
 
-@profile
+# @profile
 def main_haha():
-    os.system("python -m memory_profiler Home.py")
+    # os.system("python -m memory_profiler Home.py")
     # st.set_page_config(
     #     page_title="Web_App_Of_Phat",
     #     # page_icon="😃",
@@ -54,7 +54,7 @@ def main_haha():
         # st.write("Đã load Model")
         return detector_temp
 
-    # @st.cache(max_entries=2)
+    @st.cache(max_entries=1)
     # @st.experimental_singleton
     @st.experimental_singleton(suppress_st_warning=True)
     def track_vdieo(text):
@@ -66,7 +66,7 @@ def main_haha():
         detector = None
         tracker = None
 
-    # @st.cache(max_entries=2)
+    @st.cache(max_entries=1)
     # @st.experimental_singleton
     @st.experimental_singleton(suppress_st_warning=True)
     def detect_image(txt):
@@ -143,7 +143,7 @@ def main_haha():
 
         detect_image(tfile.name)
 
-        st.experimental_singleton.clear()
+        # st.experimental_singleton.clear()
 
         # result = detector.detect(str(tfile.name), plot_bb=True)
 
