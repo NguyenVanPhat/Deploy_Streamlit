@@ -161,11 +161,15 @@ def main_haha():
         # gc.collect()
 
     uploaded_file = None
-    for name in dir():
-        # st.write("Name: ", name)
-        if not name.startswith('_'):
-            del globals()[name]
-    gc.collect()
+    try:
+        for name in dir():
+            # st.write("Name: ", name)
+            if not name.startswith('_'):
+                del globals()[name]
+        gc.collect()
+    except:
+        pass
+
 # gc.enable()
 
 main_haha()
