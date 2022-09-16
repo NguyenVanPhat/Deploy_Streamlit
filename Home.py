@@ -44,8 +44,8 @@ def main_haha():
     # chạy trước, Do đó nó sẽ ko chạy nữa mà lấy luôn kết quả của lần chạy trước (nghĩa là chỉ chạy 1 lần duy nhất)
     # điều này giúp Model ko phải load đi load lại tránh tràn RAM hoặc disk của máy chủ (streamlit cloud)
     # @st.cache(hash_funcs={"MyUnhashableClass": lambda _: None})
-    @st.cache
-    def load_model(text):
+    @st.cache(ttl=60, max_entries=1)
+    def load_model(text):        
         wget.download("https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7x.pt")
         detector_temp = Detector()
         detector_temp.load_model(text)
@@ -53,10 +53,11 @@ def main_haha():
         os.remove("./traced_model.pt")
         # st.write("Đã load Model")
         return detector_temp
-
+r
     # @st.cache(max_entries=2)
     # @st.experimental_singleton
     # @st.experimental_singleton(suppress_st_warning=True)
+    @st.cache(ttl=60, max_entries=1)
     def track_vdieo(text):
         detector = load_model("./yolov7x.pt")
         tracker = YOLOv7_DeepSORT(reID_model_path="./deep_sort/model_weights/mars-small128.pb", detector=detector)
@@ -69,6 +70,7 @@ def main_haha():
     # @st.cache(max_entries=2)
     # @st.experimental_singleton
     # @st.experimental_singleton(suppress_st_warning=True)
+    @st.cache(ttl=60, max_entries=1)
     def detect_image(txt):
         detector = load_model("./yolov7x.pt")
         result = detector.detect(str(txt), plot_bb=True)
