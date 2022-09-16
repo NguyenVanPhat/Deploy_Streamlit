@@ -54,7 +54,7 @@ def main_haha():
         # st.write("Đã load Model")
         return detector_temp
 
-    @st.cache(max_entries=1)
+    # @st.cache(max_entries=1)
     # @st.experimental_singleton
     @st.experimental_singleton(suppress_st_warning=True)
     def track_vdieo(text):
@@ -66,7 +66,7 @@ def main_haha():
         detector = None
         tracker = None
 
-    @st.cache(max_entries=1)
+    # @st.cache(max_entries=1)
     # @st.experimental_singleton
     @st.experimental_singleton(suppress_st_warning=True)
     def detect_image(txt):
